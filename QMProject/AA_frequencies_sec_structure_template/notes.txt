@@ -1,0 +1,48 @@
+# All important notes, planning steps, interpretation of results...
+conda list: gives you a list of all vestions that are installed
+Make github account.
+Go to https://github.com/biodatasciencetulln/AA_frequencies_sec_structure_template and clone this template repository
+Log via Jupyter https://jupyter.tulln.fhwn.ac.at/ with your user name and password from FH
+Make a new folder for the project in JupyterLab
+Using the terminal cd projectname
+git clone https://github.com/biodatasciencetulln/AA_frequencies_sec_structure_template.git
+ls
+cd AA_frequencies_sec_structure_template/
+
+       Before running the scripts:
+       In the script named: select_from_pdb.py there is an error: the results should be written to stdout and not to stderr in the for loop. 
+       Thus, when 01_download calls the script it does not work.
+       Need to make all scripts executable as some are not, using this command: chmod +x scriptname
+        
+
+
+First, the input data are protein structures from the PDB as plaintext files. We need Bio.PDB which is a Biopython module that focuses on working with crystal structures of biological macromolecules e.g. protein structure.
+
+Secund, from this pool of data, the relative frequencies is determine of the constituent amino acids for each protein secondary structural class; use only the three descriptors “helix,” “sheet,” and, for any AA not within a helix or sheet, “irregular.” (Hint: In considering file parsing and potential data structures, search online for the PDB’s file-format specifications.) Output your statistical data to a human-readable file format (e.g., comma-separated values,  ) such that the results can be opened in a statistical or graphical software package for further processing and analysis. As a bonus exercise, use Python’s  package to visualize the findings of your structural bioinformatics analysis.
+
+What are the required steps to process the data? Think about the results: What kind of plot(s) would be most informative?
+    Define project goals, milestones and work packages, as fine-grained as possible. Estimate the time to complete the work packages. E.g.:
+        Milestone 1: Collect necessary information
+            WP 1: Learn about PDB database -> x hours
+            WP 2: Learn about pdb file format -> y hours
+            WP 3: ... ;
+        Milestone 2: Select and download the protein structure files from PDB -> Deliverable(s): Folder with PDB files
+        ...
+    Identify requirements like tools/libraries/databases that you intend to use. You might need tools to download files from PDB, parse them somehow, determine the protein secondary structure, determine the amino acid frequencies, output the results to a .csv file, and plot the results.
+        Biopython is a good starting point, try the wiki
+    Define the required Python scripts in terms of input and output, and plan the time to write them.
+        Python script 1, "do_something.py": does this and that; input = ..., output = ... -> x hours
+        Python script 2, "do_this_other_thing.py": does this other important thing; input = ..., output = ... -> y hours
+        It is good practice to put this information (skeletal documentation) in a comment section in the beginning of the script
+        If you can specify the inputs and outputs, I will provide the corresponding Python scripts.
+
+Design the project structure. What should the project structure look like in the end? Consult the best-practices cheat sheet.
+
+    A. Which files/folders are required to reproduce the project?
+    B. Which files/folders should be present after successful project completion, so that the user can immediately see what was done, how it was done, which data were used as input, and where the results are located?
+
+Write the Bash driver scripts for all steps of the project.
+
+    The driver scripts should create all required directories (like data for input data and results for output files) and call other tools or Python scripts that do the work.
+
+Place all the relevant files (files from the step 2.A, as well as project planning and scientific notes files) under version control (Git), and push them to your (private) Github repository.
